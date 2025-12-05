@@ -61,10 +61,13 @@ const App = () => {
           {/* Colonne Gauche : Formulaires */}
           <div className="lg:col-span-2 space-y-6">
             <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 transition-shadow hover:shadow-md">
-              <label className="block text-sm font-bold text-slate-700 mb-2 uppercase tracking-wide">
+              <label 
+                htmlFor='orga-name-input'
+                className="block text-sm font-bold text-slate-700 mb-2 uppercase tracking-wide">
                 Organisation
               </label>
               <input 
+                id='orga-name-input'
                 type="text" 
                 value={orgName} 
                 onChange={(e) => setOrgName(e.target.value)} 

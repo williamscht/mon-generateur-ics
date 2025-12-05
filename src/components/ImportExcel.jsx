@@ -17,7 +17,7 @@ const ImportExcel = ({ onImportSuccess }) => {
     try {
       const newEvents = await parseExcelFile(file);
       onImportSuccess(newEvents);
-      e.target.value = ''; 
+      e.target.value = '';
     } catch (err) {
       setError(err.toString());
     } finally {
@@ -27,7 +27,14 @@ const ImportExcel = ({ onImportSuccess }) => {
 
   return (
     <div className="mb-6">
+
+      {/* Label invisible pour l'accessibilité */}
+      <label htmlFor="excel-file-input" className="sr-only">
+        Importer un fichier Excel
+      </label>
+
       <input
+        id="excel-file-input"
         type="file"
         ref={fileInputRef}
         onChange={handleFileChange}
