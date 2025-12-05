@@ -9,17 +9,23 @@ import { generateICSContent } from './utils/icsGenerator.js';
 
 const App = () => {
   const [events, setEvents] = useState([
-    { id: 1, title: '', date: '', time: '09:00', type: 'Bureau' }
+    { id: 1, title: '', date: '', time: '09:00', type: 'Bureau', duration: 60, isAllday: false }
   ]);
   const [orgName, setOrgName] = useState('');
   
   // L'état de l'aide est géré ici, mais passé au Header pour affichage
   const [showInstructions, setShowInstructions] = useState(true);
 
-  const validEvents = events.filter(e => e.date && e.title).length;
+  const isEventValid = (e) => {
+  if (!e.title || !e.date) return false;
+  if (e.isAllDay) return true;
+  return Boolean(e.time && e.duration);
+};
+
+const validEvents = events.filter(isEventValid).length;
 
   const addEvent = () => {
-    setEvents([...events, { id: Date.now(), title: '', date: '', time: '09:00', type: 'Bureau' }]);
+    setEvents([...events, { id: Date.now(), title: '', date: '', time: '09:00', type: 'Bureau', duration: 60, isAllday: false }]);
   };
 
   const removeEvent = (id) => {

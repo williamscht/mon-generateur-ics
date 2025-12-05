@@ -25,6 +25,21 @@ const ImportExcel = ({ onImportSuccess }) => {
     }
   };
 
+  const handleImportSuccess = (newEvents) => {
+    const enriched = newEvents.map((e, idx) => ({
+      id: e.id ?? Date.now() + idx,
+      title: e.title || '',
+      date: e.date || '',
+      time: e.time || '09:00',
+      type: e.type || 'Bureau',
+      duration: e.duration ?? 60,
+      isAllDay: e.isAllDay ?? false,
+    }));
+  
+    setEvents(prevEvents => [...prevEvents, ...enriched]);
+    alert(`${enriched.length} événements importés avec succès !`);
+  };
+
   return (
     <div className="mb-6">
 
