@@ -70,9 +70,15 @@ const EventCard = ({ event, index, totalEvents, onUpdate, onRemove }) => {
         </div>
 
         {/* DATE + HEURE */}
-        <div className="md:col-span-2 xl:col-span-4 grid grid-cols-2 gap-4">
-          
-          <div>
+        <div className="md:col-span-2 
+                xl:col-span-4 
+                grid 
+                grid-cols-1  
+                md:grid-cols-2
+                gap-4
+                ">
+        <div>
+            
             <label
               htmlFor={`${baseId}-date`}
               className="block text-xs font-bold text-slate-500 mb-1 uppercase"
